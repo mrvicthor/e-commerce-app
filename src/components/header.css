@@ -1,0 +1,119 @@
+.primary-header {
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  background-color: hsl(var(--clr-white));
+  overflow: hidden;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: clamp(2em, 6vw, 9em);
+}
+
+.primary-header nav {
+  margin-right: auto;
+}
+.mobile-nav-toggle {
+  display: none;
+}
+
+.primary-navigation {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  color: hsl(var(--clr-grayishBlue));
+  text-decoration: none;
+}
+
+.primary-navigation a:hover {
+  color: hsl(var(--clr-black));
+}
+.primary-navigation > .active a {
+  color: hsl(var(--clr-black));
+}
+
+.header-profile img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.header-logo {
+  margin-block: 2rem;
+}
+
+@media (max-width: 35em) {
+  .header-logo {
+    margin-right: auto;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    margin-top: 0.5rem;
+    padding: 0;
+    z-index: 20000;
+    background-color: transparent;
+    font-size: 1.3rem;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+  }
+
+  .mobile-nav-toggle:focus-visible {
+    outline: 5px solid white;
+    /* outline-offset: 5px; */
+  }
+
+  .primary-navigation {
+    position: fixed;
+    z-index: 10000;
+    background-color: hsl(var(--clr-white));
+    flex-direction: column;
+    inset: 0 30% 0 0;
+    padding: min(20rem, 15vh) 2rem;
+    transform: translateX(-100%);
+    transition: transform 500ms ease-in-out;
+  }
+
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0%);
+  }
+
+  .primary-navigation a {
+    color: hsl(var(--clr-black));
+    font-size: var(--fs-600);
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 45em) {
+  .underline-indicator > * {
+    cursor: pointer;
+    padding: var(--underline-gap, 1rem) 0;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .underline-indicator > *:hover,
+  .underline-indicator > *:focus {
+    border-bottom: 0.2rem solid hsl(var(--clr-paleOrange));
+  }
+
+  .underline-indicator > .active,
+  .underline-indicator > [aria-selected="true"] {
+    color: hsl(var(--clr-black));
+    border-bottom: 0.2rem solid hsl(var(--clr-orange));
+  }
+
+  .header-profile {
+    gap: var(--gap, 2.5rem);
+    justify-content: center;
+    align-items: center;
+  }
+  .header-profile > *:last-child {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}

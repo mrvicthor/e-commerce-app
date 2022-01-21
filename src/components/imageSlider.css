@@ -1,0 +1,40 @@
+.slider-container {
+  position: relative;
+  z-index: 1;
+}
+.slider-btn {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  width: 2rem;
+  border: 0;
+}
+
+.slider-container.slider-btn {
+  text-align: center;
+}
+.left {
+  top: 0;
+  left: 1rem;
+}
+
+.right {
+  top: 0;
+  right: 1rem;
+}
+
+.slider-buttons {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  margin: auto;
+}
+
+@media (min-width: 45em) {
+  .slider-container {
+    display: none;
+  }
+}
