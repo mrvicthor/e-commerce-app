@@ -8,11 +8,11 @@ const Blocks = ({ images, handlePageChange, activeIndex }) => {
       {images.map((image, index) => (
         <div
           role="tab"
-          className={selected === activeIndex ? "dot" : "dot active"}
+          className={`${index === activeIndex ? "dot active" : "dot"}`}
           onClick={() => {
-            setSelected(!selected);
+            setSelected(true);
           }}
-          aria-selected={!setSelected ? "true" : "false"}
+          aria-selected={`${index === activeIndex ? "true" : "false"}`}
           key={index}
         >
           <picture>

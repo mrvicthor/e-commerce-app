@@ -4,12 +4,8 @@ import "./modal.css";
 
 import Blocks from "./blocks";
 
-const Modal = ({ images, onClose }) => {
+const Modal = ({ images, onClose, modalImage }) => {
   const [index, setIndex] = useState(0);
-
-  //   const getSelectedProduct = (i) => {
-  //     const images = images.map((image, index) => image[index] === image[i]);
-  //   };
 
   const handlePageChange = (page) => {
     let n = page - index;
@@ -40,10 +36,10 @@ const Modal = ({ images, onClose }) => {
           onClick={onClose}
         />
         <div className="slider-container--desktop">
-          {images.length > 0 && (
+          {modalImage.length > 0 && (
             <div className="desktop-image">
               <picture>
-                <img src={images[index]} alt={index} />
+                <img src={modalImage[index]} alt={index} />
               </picture>
             </div>
           )}

@@ -12,6 +12,10 @@
   font-weight: 700;
 }
 
+.product-info > *:nth-child(2) {
+  font-size: 1.5rem;
+}
+
 .product-info--header {
   flex-direction: column;
   gap: var(--gap, 0.05rem);
@@ -111,6 +115,12 @@
     transform: scale(1.05);
   }
 
+  .image-obj {
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+    object-position: center;
+  }
   .dot {
     cursor: pointer;
   }
@@ -119,49 +129,41 @@
     border-radius: 10px;
   }
 
-  .dot:hover,
   .dot:focus {
-    border-radius: 12px;
     border: 2px solid hsl(var(--clr-orange));
+    border-radius: 12px;
   }
 
-  .dot *:hover {
+  .dot :hover {
     opacity: 0.3;
   }
 
   .dot .active {
     border: 2px solid hsl(var(--clr-orange));
     border-radius: 10px;
+  }
+
+  .active img {
     opacity: 0.3;
   }
 
-  /* .block-indicators > [aria-selected="true"],
-  .block-indicators > [aria-selected="true"]:focus {
+  .block-indicators > [aria-selected="true"],
+  .block-indicators > [aria-selected="true"] :focus {
     border: 2px solid hsl(var(--clr-orange));
     border-radius: 10px;
-    opacity: 0.3;
-  } */
-
-  /* .block-indicators [aria-selected="true"] img {
-    opacity: 0.3;
-  } */
-
-  /* .block-indicators > *:hover,
-  .block-indicators > *:focus {
-    border: 2px solid hsl(var(--clr-orange));
-    border-radius: 10px;
-  } */
-
-  /* .block-indicators .border-radius:hover {
-    opacity: 0.3;
-  } */
+  }
 
   .product-info {
-    padding-top: 3rem;
+    padding-top: 2.5rem;
   }
-
+  .product-info > h1 {
+    font-size: 1rem;
+  }
+  .product-info > :nth-child(2) {
+    font-size: clamp(1rem, 3vw, 1.8rem);
+  }
   .product-info > *:nth-child(3) {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
   }
   .price-info {
@@ -169,10 +171,11 @@
     gap: var(--gap, 0.05rem);
   }
   .buttons {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     flex-direction: row;
   }
   .shopping-cart {
+    padding: 1rem;
     flex: 70%;
   }
 }

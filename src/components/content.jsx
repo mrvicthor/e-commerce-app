@@ -3,19 +3,23 @@ import "./content.css";
 import Blocks from "./blocks";
 import Modal from "./modal";
 
-const Content = ({ images, indicators }) => {
+const Content = ({ images }) => {
   const [index, setIndex] = useState(0);
 
   const [isToggled, setIstoggled] = useState(false);
+
+  const [modalImage, setModalImage] = useState([]);
 
   const handlePageChange = (page) => {
     let n = page - index;
     setIndex(index + n);
   };
 
-  const getItem = (i) => {
-    const image = images.find((image) => image[index] === image[i]);
-    console.log(image);
+  const handleModalDisplay = (i) => {
+    const item = images.find((image, index) => {
+      if (index === i) return image;
+    });
+    setModalImage(item);
   };
 
   const addItem = () => {
@@ -27,21 +31,20 @@ const Content = ({ images, indicators }) => {
   };
 
   const purchaseItem = () => {
+    console.log(modalImage);
     console.log("Shopping Started");
   };
   return (
     <div className="grid-container--content">
       {images.length > 0 && (
-        <div className="desktop-image">
+        <div className="desktop-image" onClick={() => setIstoggled(true)}>
           <picture>
             <img
+              className="image-obj"
               src={images[index]}
               alt={index}
               onClick={() => {
-                // console.log(images);
-                // console.log(index);
-                // setIstoggled(!isToggled);
-                getItem(index);
+                handleModalDisplay(index);
               }}
             />
           </picture>
@@ -61,14 +64,15 @@ const Content = ({ images, indicators }) => {
           activeIndex={index}
           dataLength={images.length}
           onClose={() => setIstoggled(false)}
+          modalImage={modalImage}
         />
       ) : null}
       <article className="product-info flex" role="tabpanel">
         <h1 className="uppercase text-orange fs-400">Sneaker Company</h1>
 
-        <p className="text-veryDarkBlue fs-700 bold-text letter-spacing-3">
+        <p className="text-veryDarkBlue bold-text letter-spacing-3">
           Fall Limited Edition
-          <span className="text-veryDarkBlue fs-700">Sneakers</span>{" "}
+          <span className="text-veryDarkBlue">Sneakers</span>{" "}
         </p>
 
         <p className="text-dark-grayish-blue fs-300">
