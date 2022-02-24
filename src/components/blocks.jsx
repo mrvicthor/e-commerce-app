@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Blocks = ({ images, handlePageChange, activeIndex }) => {
-  const [selected, setSelected] = useState(false);
-
+const Blocks = ({ products, activeIndex, changeSlide }) => {
   return (
     <div className="block-indicators" role="tablist">
-      {images.map((image, index) => (
+      {products.map((product, index) => (
         <div
           role="tab"
-          className={`${index === activeIndex ? "dot active" : "dot"}`}
+          className={`${activeIndex === index ? "dot active" : "dot"}`}
           onClick={() => {
-            setSelected(true);
+            changeSlide(index);
           }}
-          aria-selected={`${index === activeIndex ? "true" : "false"}`}
+          aria-selected={`${activeIndex === index ? "true" : "false"}`}
           key={index}
         >
           <picture>
             <img
-              onClick={() => handlePageChange(index)}
               className="border-radius"
-              src={image}
-              alt={image}
+              src={product.imageURL}
+              alt={product.imageURL}
             />
           </picture>
         </div>

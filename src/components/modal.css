@@ -6,13 +6,13 @@
     left: 0;
     right: 0;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.3);
     height: 100vh;
   }
   .modal-wrapper--content {
     position: fixed;
     z-index: 9999;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -24,39 +24,32 @@
     color: white;
   }
 
-  .modal-wrapper--content > .block-indicators {
-    position: absolute;
+  .modal__desktop {
     display: flex;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .slider-container--desktop {
+    flex-direction: column;
+    gap: 0.8rem;
     height: 25rem;
     width: 25rem;
   }
-  .slider-container--desktop > .slider-container {
-    display: block;
+
+  .modal__desktop > * .prev {
+    left: -15px;
+    top: 60%;
   }
 
-  .slider-container--desktop .slider-container > img {
-    border-radius: 10px;
+  .modal__desktop > * .next {
+    right: -15px;
+    top: 60%;
   }
 
-  .slider-container--desktop .slider-buttons > * {
-    cursor: pointer;
-    height: 3rem;
-    width: 3rem;
+  .modal__desktop > *.block-indicators {
+    padding-inline: 2rem;
+  }
+  .dot :hover {
+    opacity: 0.3;
   }
 
-  .slider-container--desktop .slider-buttons * img {
-    padding-left: 0.5rem;
-  }
-  .slider-container--desktop .slider-buttons > .left {
-    left: -1.5rem;
-  }
-
-  .slider-container--desktop .slider-buttons > .right {
-    right: -1.5rem;
+  .modal__slide > * img {
+    border-radius: 9px;
   }
 }

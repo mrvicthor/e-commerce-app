@@ -244,10 +244,6 @@ select {
   display: grid;
 }
 
-.block-indicators {
-  display: none;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -263,51 +259,88 @@ select {
   padding-bottom: 3.5rem;
 }
 
-.grid-container--content > .product-info {
-  padding-inline: 2rem;
+.slider-container {
+  margin-top: 84px;
+  position: relative;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.arrows {
+  overflow: hidden;
+}
+
+.slides {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.activex {
+  display: inline-block;
+}
+
+.inactive {
+  display: none;
+}
+
+.prev {
+  left: 1.5rem;
+}
+.next {
+  right: 2rem;
+}
+
+.product-info > * {
+  padding-inline: 2rem;
+}
+
+.desktop__slide--container {
+  padding-block: 4rem;
+  height: 100%;
+  width: 100%;
+  margin-top: 85px;
+}
+
+.grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.desktop__slides {
+  display: grid;
+  gap: 1rem;
+  padding-inline: 5rem;
+  margin-inline: auto;
+  width: min(95%, 70rem);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.desktop__slides > *:nth-child(2) {
+  grid-column: span 2;
+  padding-inline: 0;
+}
+/* border */
+.block-indicators {
+  grid-column: span 2;
+  display: flex;
+  gap: 1rem;
+}
+.block-indicators > * {
+  height: 100%;
+  width: 88px;
 }
 
 @media (min-width: 45em) {
   body.modal-wrapper--content {
     overflow: hidden;
   }
-  .grid-container::before {
+  .desktop__slide--container::before {
     content: "";
     position: relative;
-    height: 1px;
+    top: -60px;
+    height: 2px;
+    display: block;
     margin-inline: 5.5em;
     background-color: hsl(var(--clr-lightGrayishBlue));
-  }
-  .grid-container--content {
-    padding-top: 4rem;
-    display: grid;
-    row-gap: 0.6rem;
-    column-gap: clamp(0.5em, 6vw, 9em);
-    grid-template-columns:
-      minmax(3rem, 1fr) minmax(0, 25rem) minmax(0, 25rem)
-      minmax(3rem, 1fr);
-  }
-
-  .grid-container--content > *:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container--content > *:last-child {
-    grid-column: 3;
-    grid-row: 1;
-  }
-  .grid-container--content > .block-indicators {
-    grid-column: 2;
-    display: flex;
-    gap: var(--gap, 1em);
-  }
-
-  .grid-container--content > .product-info {
-    padding-inline: 0;
-  }
-
-  #main {
-    padding-bottom: 5rem;
   }
 }

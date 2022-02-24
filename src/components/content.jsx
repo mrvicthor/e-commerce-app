@@ -2,107 +2,66 @@ import React, { useState } from "react";
 import "./content.css";
 import Blocks from "./blocks";
 import Modal from "./modal";
+import Article from "./Article";
 
-const Content = ({ images }) => {
-  const [index, setIndex] = useState(0);
+const Content = ({
+  products,
+  handleIncrease,
+  handleDecrease,
+  handlePurchase,
+  count,
+}) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSlideChange = (activeIndex) => {
+    setActiveIndex(activeIndex);
+  };
 
   const [isToggled, setIstoggled] = useState(false);
 
-  const [modalImage, setModalImage] = useState([]);
+  const slideLeft = () =>
+    setActiveIndex(activeIndex < 1 ? products.length - 1 : activeIndex - 1);
 
-  const handlePageChange = (page) => {
-    let n = page - index;
-    setIndex(index + n);
-  };
+  const slideRight = () =>
+    setActiveIndex(activeIndex === products.length - 1 ? 0 : activeIndex + 1);
 
-  const handleModalDisplay = (i) => {
-    const item = images.find((image, index) => {
-      if (index === i) return image;
-    });
-    setModalImage(item);
-  };
-
-  const addItem = () => {
-    console.log("Item Added");
-  };
-
-  const subtractItem = () => {
-    console.log("Items Subtracted");
-  };
-
-  const purchaseItem = () => {
-    console.log(modalImage);
-    console.log("Shopping Started");
-  };
   return (
-    <div className="grid-container--content">
-      {images.length > 0 && (
-        <div className="desktop-image" onClick={() => setIstoggled(true)}>
-          <picture>
-            <img
-              className="image-obj"
-              src={images[index]}
-              alt={index}
-              onClick={() => {
-                handleModalDisplay(index);
-              }}
-            />
-          </picture>
-        </div>
-      )}
-
-      <Blocks
-        activeIndex={index}
-        handlePageChange={handlePageChange}
-        images={images}
-        dataLength={images.length}
-      />
-      {isToggled ? (
-        <Modal
-          images={images}
-          handlePageChange={handlePageChange}
-          activeIndex={index}
-          dataLength={images.length}
-          onClose={() => setIstoggled(false)}
-          modalImage={modalImage}
-        />
-      ) : null}
-      <article className="product-info flex" role="tabpanel">
-        <h1 className="uppercase text-orange fs-400">Sneaker Company</h1>
-
-        <p className="text-veryDarkBlue bold-text letter-spacing-3">
-          Fall Limited Edition
-          <span className="text-veryDarkBlue">Sneakers</span>{" "}
-        </p>
-
-        <p className="text-dark-grayish-blue fs-300">
-          {" "}
-          These low-profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they’ll withstand everything
-          the weather can offer.
-        </p>
-        <div className="flex price-info">
-          <h2 className="text-veryDarkBlue">
-            $125.00
-            <span className="fs-600 bg-pale-orange">50%</span>
-          </h2>
-          <p className="line-across fs-600">$250.00</p>
-        </div>
-        <div className="buttons flex">
-          <div className="control-btn flex">
-            <button onClick={subtractItem}>-</button>
-            <button>0</button>
-            <button onClick={addItem}>+</button>
-          </div>
-          <button
-            onClick={purchaseItem}
-            className="shopping-cart bg-orange text-white"
+    <div className="desktop__slide--container">
+      {products.map((product, index) => (
+        <div className={index === activeIndex ? "desktop__slides" : "inactive"}>
+          <div
+            className="desktop-image grid-col-span-2"
+            key={index}
+            onClick={() => setIstoggled(true)}
           >
-            <i className="fas fa-shopping-cart"></i>
-            Add to cart
-          </button>
+            <picture>
+              <img className="image-obj" src={product.imageURL} alt={index} />
+            </picture>
+          </div>
+          <Article
+            product={product}
+            onDecrease={handleDecrease}
+            onIncrease={handleIncrease}
+            onPurchase={handlePurchase}
+            count={count}
+          />
+          <Blocks
+            changeSlide={handleSlideChange}
+            products={products}
+            activeIndex={activeIndex}
+          />
+          {isToggled ? (
+            <Modal
+              products={products}
+              activeIndex={activeIndex}
+              prev={slideLeft}
+              next={slideRight}
+              changeSlide={handleSlideChange}
+              onClose={() => setIstoggled(false)}
+            />
+          ) : null}
         </div>
-      </article>
+      ))}
     </div>
   );
 };

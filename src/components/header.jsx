@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./header.css";
 import Overlay from "./overlay";
 
-const Header = () => {
+const Header = ({ handleCart, len }) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -63,7 +63,8 @@ const Header = () => {
         </ul>
       </nav>
       <div className="header-profile flex">
-        <img src="icon-cart.svg" alt="the shopping cart" />
+        {!len ? null : <span className="banner-count">{len}</span>}
+        <img src="icon-cart.svg" alt="the shopping cart" onClick={handleCart} />
         <img src="image-avatar.png" alt="image avatar" />
       </div>
     </header>
