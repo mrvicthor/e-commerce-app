@@ -38,3 +38,37 @@ Users should be able to:
 ![Uploading Screenshot (89).png…]()![Uploading Screenshot (91).png…]()
 
 
+### Links
+- Solution URL: [https://space-tourism-project.vercel.app/]
+
+## My process
+
+### Built with
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+
+### What I learned
+I learned how to work with css grid. I also learned how to work with React state and props. Additionally, i learned how to update an react state dynamically and also how to work with React hooks.
+
+### Continued development
+I intend to learn typescript, nextjs and improve my css grid layout
+
+### Useful resources
+
+[ReactJs](https://reactjs.org/) - This helped me learn some basic concepts in react.
+[Scrimba](https://scrimba.com/learn/learnreact) - Bob zirrol helped me understand react.
+[Scrimba](https://scrimba.com/learn/spacetravel/the-design-system-typography-part-2-coae546fcb4a4bd27a9640f99) - Kevin powell helped understand how to work with css grid.
+
+## Author
+
+- Website - [Victor Eleanya]
+- Frontend Mentor - [@mrvicthor](https://www.frontendmentor.io/profile/mrvicthor)
+- Twitter - [@eva_skillz](https://www.twitter.com/eva_skillz)
+
+## Acknowledgments
+
+Thanks to Jude, Bob Zirrol and Kevin Powell for the lessons while undertaking this project
