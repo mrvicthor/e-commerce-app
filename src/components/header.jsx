@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 import Overlay from "./overlay";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = ({ handleCart, len }) => {
   const [clicked, setClicked] = useState(false);
@@ -25,9 +26,9 @@ const Header = ({ handleCart, len }) => {
         </span>
         <i className={clicked ? "fas fa-times" : "fas fa-bars"} />
       </button>
-      <div className="header-logo">
+      <Link to="/" className="header-logo">
         <img src="logo.svg" alt="logo" className="logo" />
-      </div>
+      </Link>
       {clicked ? <Overlay /> : null}
       <nav>
         <ul
@@ -35,37 +36,72 @@ const Header = ({ handleCart, len }) => {
           className="primary-navigation underline-indicator flex"
           data-visible={clicked ? "true" : "false"}
         >
-          <li className="active" onClick={closeMenu}>
-            <a href="#" className="fs-200 letter-spacing-3">
+          <li className="fs-200 letter-spacing-3" onClick={closeMenu}>
+            <NavLink
+              to="/"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
               Collections
-            </a>
+            </NavLink>
           </li>
-          <li onClick={closeMenu}>
-            <a href="#" className="fs-200 letter-spacing-3">
+          <li className="fs-200 letter-spacing-3" onClick={closeMenu}>
+            <NavLink
+              to="/men"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
               Men
-            </a>
+            </NavLink>
           </li>
-          <li onClick={closeMenu}>
-            <a href="#" className="fs-200 letter-spacing-3">
+          <li className="fs-200 letter-spacing-3" onClick={closeMenu}>
+            <NavLink
+              to="/women"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
               Women
-            </a>
+            </NavLink>
           </li>
-          <li onClick={closeMenu}>
-            <a href="#" className="fs-200 letter-spacing-3">
+          <li onClick={closeMenu} className="fs-200 letter-spacing-3">
+            <NavLink
+              to="/about"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
               About
-            </a>
+            </NavLink>
           </li>
-          <li onClick={closeMenu}>
-            <a href="#" className="fs-200 letter-spacing-3">
+          <li onClick={closeMenu} className="fs-200 letter-spacing-3">
+            <NavLink
+              to="/contact"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
               Contact
-            </a>
+            </NavLink>
+          </li>
+          <li onClick={closeMenu} className="fs-200 letter-spacing-3">
+            <NavLink
+              to="/login"
+              className={(navData) => {
+                return navData.isActive ? "nav_active" : "";
+              }}
+            >
+              Login
+            </NavLink>
           </li>
         </ul>
       </nav>
       <div className="header-profile flex">
         {!len ? null : <span className="banner-count">{len}</span>}
         <img src="icon-cart.svg" alt="the shopping cart" onClick={handleCart} />
-        <img src="image-avatar.png" alt="image avatar" />
+        <img src="image-avatar.png" alt="avatar" />
       </div>
     </header>
   );

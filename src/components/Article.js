@@ -36,7 +36,7 @@ export default function Article({
           <button onClick={() => onIncrease(product)}>+</button>
         </div>
         <button
-          onClick={() => onPurchase(product)}
+          onClick={() => onPurchase(product.id)}
           className="shopping-cart bg-orange text-white"
         >
           <i className="fas fa-shopping-cart"></i>

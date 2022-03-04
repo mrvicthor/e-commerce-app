@@ -31,7 +31,7 @@
 .primary-navigation a:hover {
   color: hsl(var(--clr-black));
 }
-.primary-navigation > .active a {
+.primary-navigation > a.active {
   color: hsl(var(--clr-black));
 }
 
@@ -76,7 +76,7 @@
     font-size: 1.3rem;
     width: 1.5rem;
     aspect-ratio: 1;
-    border: 0;
+    border: none;
   }
 
   .mobile-nav-toggle:focus-visible {
@@ -113,20 +113,28 @@
 }
 @media (min-width: 45em) {
   .underline-indicator > * {
+    padding: 2rem 0;
+  }
+  .underline-indicator > * .nav_active,
+  .underline-indicator > [aria-selected="true"] {
+    color: hsl(var(--clr-black));
+    border-bottom: 0.2rem solid hsl(var(--clr-orange));
+  }
+  .underline-indicator li a {
     cursor: pointer;
-    padding: var(--underline-gap, 2rem) 0;
+    padding: 2rem 0;
     border: 0;
     background-color: transparent;
   }
 
-  .underline-indicator > *:hover,
-  .underline-indicator > *:focus {
+  .underline-indicator li a:hover {
+    color: hsl(var(--clr-black));
     border-bottom: 0.2rem solid hsl(var(--clr-paleOrange));
   }
 
-  .underline-indicator > .active,
-  .underline-indicator > [aria-selected="true"] {
+  .nav_active {
     color: hsl(var(--clr-black));
+    background-color: hsl(var(--clr-orange));
     border-bottom: 0.2rem solid hsl(var(--clr-orange));
   }
 

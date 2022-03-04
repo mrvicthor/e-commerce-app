@@ -12,17 +12,17 @@ const CartItem = ({ item, count, onDelete }) => {
       <picture>
         <img src={item.imageURL} alt="cart-item" className="cart__image" />
       </picture>
-      <article>
+      <article className="cart__product">
         <h5>{item.subtitle}</h5>
         <p>
-          ${item.price} x {count} <span>${sum}</span>
+          ${item.price} x {count} <span className="purchase__sum">${sum}</span>
         </p>
       </article>
       <button
         className="delete__btn text-dark-grayish-blue"
         onClick={() => onDelete(item.id)}
       >
-        <i class="fa fa-trash-alt"></i>
+        <i className="fa fa-trash-alt"></i>
       </button>
     </div>
   );

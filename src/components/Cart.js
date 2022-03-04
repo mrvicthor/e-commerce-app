@@ -2,8 +2,9 @@ import React from "react";
 import ReactDom from "react-dom";
 import CartItem from "./CartItem";
 import "./cart.css";
+import { Link } from "react-router-dom";
 
-const Cart = ({ toggleCart, cart, count, handleDelete }) => {
+const Cart = ({ toggleCart, cart, handleDelete }) => {
   console.log(cart);
   return ReactDom.createPortal(
     <section className="cart__container flex" onClick={toggleCart}>
@@ -16,11 +17,13 @@ const Cart = ({ toggleCart, cart, count, handleDelete }) => {
             <CartItem
               item={item}
               key={item.id}
-              count={count}
+              count={item.qty}
               onDelete={handleDelete}
             />
           ))}
-          <button className="check__out bg-orange text-white">Checkout</button>
+          <button className="check__out bg-orange text-white">
+            <Link to="/login">Checkout</Link>
+          </button>
         </>
       )}
       ;

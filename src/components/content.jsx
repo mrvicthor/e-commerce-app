@@ -28,7 +28,10 @@ const Content = ({
   return (
     <div className="desktop__slide--container">
       {products.map((product, index) => (
-        <div className={index === activeIndex ? "desktop__slides" : "inactive"}>
+        <div
+          key={product.id}
+          className={index === activeIndex ? "desktop__slides" : "inactive"}
+        >
           <div
             className="desktop-image grid-col-span-2"
             key={index}
