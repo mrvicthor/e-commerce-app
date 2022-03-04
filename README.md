@@ -39,7 +39,7 @@ Users should be able to:
 
 
 ### Links
-- Solution URL: []
+- Solution URL
 
 ## My process
 
