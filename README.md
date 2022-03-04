@@ -39,7 +39,7 @@ Users should be able to:
 
 
 ### Links
-- Solution URL: [https://space-tourism-project.vercel.app/]
+- Solution URL: []
 
 ## My process
 
